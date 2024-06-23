@@ -48,4 +48,9 @@ ORDER BY id ASC;
 SELECT name, area, population FROM World
 WHERE area>=3000000 OR population>=25000000;
 
+-- 584. Find Customer Referee
+SELECT name
+FROM Customer 
+WHERE referee_id!=2 OR referee_id is NULL ;
+
 
