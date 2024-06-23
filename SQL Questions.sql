@@ -1,4 +1,4 @@
-## 1661. Average Time of Process per Machine
+-- 1661. Average Time of Process per Machine
 SELECT machine_id, ROUND(AVG(end_time - start_time), 3) AS processing_time
 FROM (
     SELECT machine_id, process_id,
