@@ -26,3 +26,10 @@ GROUP BY v.customer_id;
 SELECT product_name, year, price
 FROM Sales s
 JOIN Product p ON s.product_id = p.product_id;
+
+-- 197. Rising Temperature
+SELECT w.id
+FROM Weather w
+JOIN Weather w_prev ON w.recordDate = DATE_ADD(w_prev.recordDate, INTERVAL 1 DAY)
+WHERE w.temperature > w_prev.temperature;
+
