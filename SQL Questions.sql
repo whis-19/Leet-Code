@@ -8,3 +8,9 @@ FROM (
     GROUP BY machine_id, process_id
 ) AS process_times
 GROUP BY machine_id;
+
+-- 1378. Replace Employee ID With The Unique Identifier
+SELECT e.name, eu.unique_id
+FROM Employees e
+LEFT JOIN EmployeeUNI eu ON e.id = eu.id
+ORDER BY e.id;
