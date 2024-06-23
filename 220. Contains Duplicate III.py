@@ -20,12 +20,6 @@ def binary_search_right(arr, x):
         
 class Solution(object):
     def containsNearbyAlmostDuplicate(self, nums, indexDiff, valueDiff):
-        """
-        :type nums: List[int]
-        :type indexDiff: int
-        :type valueDiff: int
-        :rtype: bool
-        """
         if indexDiff < 1 or valueDiff < 0:
             return False
         
