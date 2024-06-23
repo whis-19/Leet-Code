@@ -21,3 +21,8 @@ FROM Visits v
 LEFT JOIN Transactions t ON v.visit_id = t.visit_id
 WHERE t.transaction_id IS NULL
 GROUP BY v.customer_id;
+
+-- 1068. Product Sales Analysis I
+SELECT product_name, year, price
+FROM Sales s
+JOIN Product p ON s.product_id = p.product_id;
