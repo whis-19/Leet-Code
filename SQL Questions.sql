@@ -55,3 +55,14 @@ WHERE referee_id!=2 OR referee_id is NULL ;
 
 -- 1757. Recyclable and Low Fat Products
 SELECT product_id FROM Products WHERE low_fats='Y' AND recyclable ='Y';
+
+# 175. Combine Two Tables
+SELECT 
+    p.FirstName, p.LastName, a.City, a.State
+FROM 
+    Person p
+LEFT JOIN 
+    Address a
+ON 
+    p.PersonId = a.PersonId;
+
