@@ -172,4 +172,10 @@ WHERE p1.email=p2.email AND p1.id>p2.id;
 -- 511. Game Play Analysis I
 SELECT PLAYER_ID,MIN(EVENT_DATE) AS FIRST_LOGIN FROM ACTIVITY GROUP BY PLAYER_ID;
 
+-- 570. Managers with at Least 5 Direct Reports
+SELECT a.name 
+FROM Employee a 
+JOIN Employee b ON a.id = b.managerId 
+GROUP BY b.managerId 
+HAVING COUNT(*) >= 5
 
