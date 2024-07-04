@@ -169,3 +169,7 @@ ORDER BY
 DELETE p1 FROM person p1, person p2 
 WHERE p1.email=p2.email AND p1.id>p2.id;
 
+-- 511. Game Play Analysis I
+SELECT PLAYER_ID,MIN(EVENT_DATE) AS FIRST_LOGIN FROM ACTIVITY GROUP BY PLAYER_ID;
+
+
