@@ -183,3 +183,19 @@ HAVING COUNT(*) >= 5
 SELECT Employee.name,Bonus.bonus FROM Employee 
 LEFT JOIN Bonus ON Employee.empID = Bonus.empID
 WHERE bonus < 1000 OR Bonus IS NULL;
+
+-- 585. Investments in 2016
+SELECT ROUND(SUM(tiv_2016), 2) AS tiv_2016
+FROM Insurance
+WHERE tiv_2015 IN (
+    SELECT tiv_2015
+    FROM Insurance
+    GROUP BY tiv_2015
+    HAVING COUNT(*) > 1
+)
+AND (lat, lon) IN (
+    SELECT lat, lon
+    FROM Insurance
+    GROUP BY lat, lon
+    HAVING COUNT(*) = 1
+)
