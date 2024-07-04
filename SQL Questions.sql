@@ -179,3 +179,7 @@ JOIN Employee b ON a.id = b.managerId
 GROUP BY b.managerId 
 HAVING COUNT(*) >= 5
 
+-- 577. Employee Bonus
+SELECT Employee.name,Bonus.bonus FROM Employee 
+LEFT JOIN Bonus ON Employee.empID = Bonus.empID
+WHERE bonus < 1000 OR Bonus IS NULL;
