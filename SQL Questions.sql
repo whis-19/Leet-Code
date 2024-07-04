@@ -132,3 +132,9 @@ WHERE a.salary > b.salary;
 SELECT DISTINCT(p1.email) from Person p1, Person p2
 where p1.id <> p2.id AND p1.email = p2.email;
 
+-- 183. Customers Who Never Order
+SELECT name AS Customers
+FROM customers
+LEFT JOIN orders ON customers.id = orders.customerId
+WHERE orders.customerId IS NULL;
+
