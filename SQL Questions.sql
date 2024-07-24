@@ -1,5 +1,4 @@
 -- 1327. List the Products Ordered in a Period
-
 SELECT p.product_name, 
        SUM(o.unit) AS unit 
 FROM Products p 
