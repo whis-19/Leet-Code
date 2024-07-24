@@ -1,3 +1,15 @@
+-- 1327. List the Products Ordered in a Period
+
+SELECT p.product_name, 
+       SUM(o.unit) AS unit 
+FROM Products p 
+JOIN Orders o 
+ON p.product_id = o.product_id 
+WHERE o.order_date >= '2020-02-01' 
+  AND o.order_date <= '2020-02-29'
+GROUP BY o.product_id 
+HAVING unit >= 100;
+
 -- 1661. Average Time of Process per Machine
 SELECT machine_id, ROUND(AVG(end_time - start_time), 3) AS processing_time
 FROM (
