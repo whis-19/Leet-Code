@@ -1,3 +1,12 @@
+-- 1204. Last Person to Fit in the Bus
+SELECT 
+    q1.person_name
+FROM Queue q1 JOIN Queue q2 ON q1.turn >= q2.turn
+GROUP BY q1.turn
+HAVING SUM(q2.weight) <= 1000
+ORDER BY SUM(q2.weight) DESC
+LIMIT 1
+
 -- 1211. Queries Quality and Percentage
 WITH percentage as(
 select query_name, ROUND(AVG(rating<3)*100,2) as percent
