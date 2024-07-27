@@ -1,3 +1,14 @@
+
+-- 607. Sales Person
+SELECT DISTINCT sp.name
+FROM SalesPerson sp
+WHERE sp.sales_id NOT IN (
+    SELECT o.sales_id
+    FROM Orders o
+    LEFT JOIN Company c ON o.com_id = c.com_id
+    WHERE c.name = 'RED'
+);
+
 -- 602. Friend Requests II: Who Has the Most Friends
 (SELECT r.requester_id as id,IFNULL(count(requester_id),0) + IFNULL(acc.cnt,0) as num
 from (Select count(accepter_id)  as cnt, accepter_id as id
