@@ -1,3 +1,23 @@
+-- 602. Friend Requests II: Who Has the Most Friends
+(SELECT r.requester_id as id,IFNULL(count(requester_id),0) + IFNULL(acc.cnt,0) as num
+from (Select count(accepter_id)  as cnt, accepter_id as id
+from RequestAccepted r
+GROUP BY r.accepter_id
+) as acc RIGHT OUTER JOIN RequestAccepted r 
+ON acc.id=r.requester_id 
+GROUP BY r.requester_id
+)
+UNION (
+Select accepter_id as id,count(accepter_id) as num
+from RequestAccepted r
+where accepter_id NOT IN (
+    SELECT distinct requester_id from RequestAccepted
+)
+GROUP BY r.accepter_id
+)
+ORDER BY num desc
+limit 1
+
 -- 601. Human Traffic of Stadium
 SELECT s.id, s.visit_date, s.people FROM Stadium s, Stadium t, Stadium u
 WHERE ((s.id+1 = t.id AND s.id+2 = u.id) 
