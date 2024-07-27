@@ -1,3 +1,8 @@
+-- 610. Triangle Judgement
+SELECT x,y,z,
+case WHEN (x+y) > z AND (x+z) > y AND (y+z) > x THEN 'Yes' ELSE 'No' end AS triangle
+FROM Triangle 
+
 -- 608. Tree Node
 SELECT id, CASE
     WHEN p_id IS NULL THEN 'Root'
