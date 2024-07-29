@@ -1,3 +1,15 @@
+-- 1164. Product Price at a Given Date
+select product_id ,10 as price 
+from products
+group by product_id 
+having min(change_date) > '2019-08-16'
+union all
+select product_id , new_price as price 
+from products
+where( product_id , change_date) in (
+    select product_id , max(change_date) as price from products where change_date <=  '2019-08-16' group by product_id
+    )
+
 -- 1174. Immediate Food Delivery II
 select ROUND(SUM(IF(ct.o_date = ct.d_date,1,0))*100/(select COUNT(DISTINCT(customer_id)) from Delivery)
 ,2) as immediate_percentage
