@@ -1,3 +1,8 @@
+-- 1141. User Activity for the Past 30 Days I
+select activity_date as day, count(distinct user_id) as  active_users from Activity
+where datediff('2019-07-27', activity_date)<30 and activity_date <'2019-07-29'
+group by day
+
 -- 1158. Market Analysis I
 SELECT u.user_id as buyer_id, u.join_date, count(o.order_id) as 'orders_in_2019'
 FROM users u
