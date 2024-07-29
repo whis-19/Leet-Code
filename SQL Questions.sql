@@ -1,3 +1,9 @@
+-- 1084. Sales Analysis III
+SELECT product_id, product_name FROM Product 
+WHERE product_id IN(SELECT product_id FROM Sales 
+GROUP BY product_id HAVING MIN(sale_date) >= '2019-01-01'
+AND MAX(sale_date) <= '2019-03-31')
+
 -- 1141. User Activity for the Past 30 Days I
 select activity_date as day, count(distinct user_id) as  active_users from Activity
 where datediff('2019-07-27', activity_date)<30 and activity_date <'2019-07-29'
