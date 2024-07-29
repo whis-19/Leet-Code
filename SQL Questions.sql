@@ -1,3 +1,10 @@
+-- 627. Swap Salary
+UPDATE salary SET sex =
+CASE sex
+    WHEN 'm' THEN 'f'
+    ELSE 'm'
+END;
+
 -- 626. Exchange Seats
 SELECT id,
     CASE
