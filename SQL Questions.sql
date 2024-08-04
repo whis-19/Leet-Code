@@ -1,3 +1,13 @@
+-- 1393. Capital Gain/Loss
+SELECT stock_name, SUM(
+    CASE
+        WHEN operation = 'Buy' THEN -price
+        ELSE price
+    END
+) AS capital_gain_loss
+FROM Stocks
+GROUP BY stock_name
+
 -- 1378. Replace Employee ID With The Unique Identifier
 SELECT e.name, eu.unique_id
 FROM Employees e
