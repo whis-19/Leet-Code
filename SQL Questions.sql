@@ -1,3 +1,8 @@
+-- 1517. Find Users With Valid E-Mails
+SELECT *
+FROM Users
+WHERE mail REGEXP '^[a-zA-Z][a-zA-Z0-9_.-]*@leetcode[.]com';
+
 -- 1484. Group Sold Products By The Date
 SELECT sell_date, 
        COUNT(DISTINCT product) AS num_sold, 
