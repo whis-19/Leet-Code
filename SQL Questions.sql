@@ -1,3 +1,9 @@
+-- 1378. Replace Employee ID With The Unique Identifier
+SELECT e.name, eu.unique_id
+FROM Employees e
+LEFT JOIN EmployeeUNI eu ON e.id = eu.id
+ORDER BY e.id;
+
 -- 1075. Project Employees I
 Select 
     Project.project_id, 
