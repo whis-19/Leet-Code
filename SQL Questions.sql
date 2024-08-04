@@ -1,3 +1,11 @@
+-- 1484. Group Sold Products By The Date
+SELECT sell_date, 
+       COUNT(DISTINCT product) AS num_sold, 
+       GROUP_CONCAT(DISTINCT product) AS products
+FROM Activities
+GROUP BY sell_date
+ORDER BY sell_date;
+
 -- 1407. Top Travellers
 SELECT Users.name, ifnull(SUM(Rides.distance),0) AS travelled_distance
 FROM Users
