@@ -1,3 +1,11 @@
+-- 1407. Top Travellers
+SELECT Users.name, ifnull(SUM(Rides.distance),0) AS travelled_distance
+FROM Users
+LEFT OUTER JOIN Rides
+ON Users.id = Rides.user_id
+GROUP BY Users.id
+ORDER BY travelled_distance DESC, Users.name ASC
+
 -- 1393. Capital Gain/Loss
 SELECT stock_name, SUM(
     CASE
