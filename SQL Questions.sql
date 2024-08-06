@@ -1,3 +1,13 @@
+-- 1789. Primary Department for Each Employee
+SELECT employee_id, department_id
+FROM Employee
+WHERE primary_flag='Y' OR 
+    employee_id in
+    (SELECT employee_id
+    FROM Employee
+    Group by employee_id
+    having count(employee_id)=1)
+
 -- 1741. Find Total Time Spent by Each Employee
 SELECT event_day AS day, 
 emp_id, SUM(out_time-in_time) AS total_time
