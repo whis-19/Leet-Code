@@ -1,3 +1,31 @@
+-- 1934. Confirmation Rate
+WITH UserRequests AS (
+    SELECT 
+        user_id,
+        COUNT(*) AS total_requests,
+        SUM(CASE WHEN action = 'confirmed' THEN 1 ELSE 0 END) AS confirmed_requests
+    FROM 
+        Confirmations
+    GROUP BY 
+        user_id
+),
+UserConfirmationRate AS (
+    SELECT 
+        s.user_id,
+        COALESCE(confirmed_requests, 0) AS confirmed_requests,
+        COALESCE(total_requests, 0) AS total_requests,
+        ROUND(COALESCE(confirmed_requests, 0) * 1.0 / COALESCE(total_requests, 1), 2) AS confirmation_rate
+    FROM 
+        Signups s
+    LEFT JOIN 
+        UserRequests ur ON s.user_id = ur.user_id
+)
+SELECT 
+    user_id, 
+    confirmation_rate
+FROM 
+    UserConfirmationRate
+
 -- 1070. Product Sales Analysis III
 WITH CTE AS (
     SELECT product_id, MIN(year) AS minyear FROM Sales 
