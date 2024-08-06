@@ -1,3 +1,11 @@
+-- 1731. The Number of Employees Which Report to Each Employee
+Select e1.employee_id, e1.name, count(e2.employee_id) as reports_count,
+     round(avg(e2.age)) as average_age
+From employees e1 
+Join employees e2 on e1.employee_id = e2.reports_to
+Group by e1.employee_id, e1.name
+Order by e1.employee_id
+
 -- 1729. Find Followers Count
 Select 
     user_id,
