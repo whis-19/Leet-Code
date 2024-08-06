@@ -1,3 +1,8 @@
+-- 1741. Find Total Time Spent by Each Employee
+SELECT event_day AS day, 
+emp_id, SUM(out_time-in_time) AS total_time
+FROM Employees GROUP BY event_day,emp_id;
+
 -- 1731. The Number of Employees Which Report to Each Employee
 Select e1.employee_id, e1.name, count(e2.employee_id) as reports_count,
      round(avg(e2.age)) as average_age
