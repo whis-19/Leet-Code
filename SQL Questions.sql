@@ -1,3 +1,12 @@
+-- 1729. Find Followers Count
+Select 
+    user_id,
+    count(follower_id) as followers_count
+From
+    Followers
+Group by user_id
+Order by user_id;
+
 -- 1693. Daily Leads and Partners
 SELECT date_id, make_name, 
        count(DISTINCT lead_id) as unique_leads, 
