@@ -1,3 +1,8 @@
+-- 2356. Number of Unique Subjects Taught by Each Teacher
+Select  teacher_id ,
+count(distinct subject_id ) as cnt from Teacher
+group by teacher_id
+
 -- 3220. Odd and Even Transactions
 SELECT transaction_date, 
 SUM(CASE WHEN amount%2 != 0 THEN amount ELSE 0 END) AS odd_sum,
