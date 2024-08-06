@@ -1,3 +1,11 @@
+-- 1890. The Latest Login in 2020
+SELECT
+    user_id,
+    MAX(time_stamp) AS last_stamp #obtaining latest login for all users
+FROM Logins
+WHERE YEAR(time_stamp) = 2020 #filtering for login dates with year 2020 in timestamp
+GROUP BY user_id;
+
 -- 1907. Count Salary Categories
 SELECT category, sum(accounts_count) AS accounts_count FROM
 (SELECT 'Low Salary' AS category, 0 AS accounts_count
