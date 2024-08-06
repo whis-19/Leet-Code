@@ -1,3 +1,14 @@
+-- 1907. Count Salary Categories
+SELECT category, sum(accounts_count) AS accounts_count FROM
+(SELECT 'Low Salary' AS category, 0 AS accounts_count
+UNION
+SELECT 'Average Salary' AS category, 0 AS accounts_count
+UNION
+SELECT 'High Salary' AS category, 0 AS accounts_count
+UNION (
+    SELECT accounts_count AS category, COUNT(accounts_count) AS accounts_count FROM (SELECT *, IF(income<20000,'Low Salary',If(income>=20000 and income<=50000,'Average Salary','High Salary')) AS accounts_count FROM Accounts) AS temp_table GROUP BY accounts_count
+)) AS temp_table GROUP BY category;
+
 -- 1965. Employees With Missing Information
 SELECT COALESCE(e.employee_id, s.employee_id) AS employee_id
 FROM Employees e
