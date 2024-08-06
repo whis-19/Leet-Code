@@ -1,3 +1,13 @@
+-- 1070. Product Sales Analysis III
+WITH CTE AS (
+    SELECT product_id, MIN(year) AS minyear FROM Sales 
+    GROUP BY product_id 
+)
+
+SELECT s.product_id, s.year AS first_year, s.quantity, s.price 
+FROM Sales s
+INNER JOIN CTE ON cte.product_id = s.product_id  AND s.year = cte.minyear; 
+
 -- 1873. Calculate Special Bonus
 SELECT employee_id,
 IF (employee_id%2 AND name not like "M%", salary, 0) as bonus
